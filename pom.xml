@@ -7,6 +7,13 @@
 	<version>1.0</version>
 	<packaging>jar</packaging>
 
+<repositories>
+	<repository>
+		<id>releases</id>
+		<url>https://breda.informatik.uni-mannheim.de/nexus/content/repositories/releases/</url>
+	</repository>
+</repositories>
+
 	<name>SearchJoin</name>
 	<url>http://maven.apache.org</url>
 
@@ -21,7 +28,31 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
+<plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>2.1</version>
+
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <transformers>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                  <mainClass>de.uni_mannheim.informatik.dws.searchjoin.cli.TableIndexing</mainClass>
+                </transformer>
+              </transformers>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
 		</plugins>
+
 	</build>
 
 	<properties>
