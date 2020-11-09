@@ -81,7 +81,7 @@ public class TableIndexing extends Executable {
 					TableFactory fac = new TableFactory();
 					
 					Table t = fac.createTableFromFile(f);
-					t.
+
 					if(t!=null) {
 						ti.indexTable(t, f);
 					}
