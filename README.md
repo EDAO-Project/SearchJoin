@@ -3,6 +3,17 @@
 Given a user-provided query table, a Search Join [1] finds related tables and integrates them with the query table.
 The result is an enriched query table with additional attributes.
 
+
+##  Compile
+
+
+```
+docker run  -it -v `pwd`:/src  --entrypoint=/bin/bash maven:3-openjdk-8
+cd /src
+mvn package
+```
+
+
 ## How to run
 
 To run the search join, you first need to create an index over a corpus of tables:
