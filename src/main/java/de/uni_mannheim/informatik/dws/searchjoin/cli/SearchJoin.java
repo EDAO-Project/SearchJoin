@@ -93,6 +93,16 @@ public class SearchJoin extends Executable {
 			TableFactory fac = new TableFactory();
 			
 			// load the query table
+			File q = new File(p);
+			if(!q.exists()){
+				System.err.println("File not found: '"+p+"'");
+				System.exit(1);
+			} else if (!q.canRead()){
+				System.err.println("Cannot read file: '"+p+"'");
+				System.exit(1);
+			}
+
+
 			Table t = fac.createTableFromFile(new File(p));
 			tablesById.put(t.getTableId(), t);
 			
